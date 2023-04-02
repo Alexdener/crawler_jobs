@@ -3,14 +3,14 @@ package engine
 import "log"
 
 type Engine struct {
-	Scheduler        Scheduler //调度器
-	WorkerCount      int       //worker数量
-	RequestProcessor Processor //请求处理器，分布式爬虫可实现rpc调用
-	ItemChan         chan Item //数据存储
+	Scheduler        Scheduler // 调度器
+	WorkerCount      int       // worker数量
+	RequestProcessor Processor // 请求处理器，分布式爬虫可实现rpc调用
+	ItemChan         chan Item // 数据存储
 }
 
 func (e *Engine) Run(seeds ...Request) {
-	//等待request和worker 1个request分配给1个worker
+	// 等待request和worker 1个request分配给1个worker
 	e.Scheduler.Run()
 	for _, seed := range seeds {
 		e.Scheduler.Submit(seed)
@@ -24,7 +24,7 @@ func (e *Engine) Run(seeds ...Request) {
 	for {
 		result := <-out
 		for _, item := range result.Items {
-			log.Println("save item", item.Id)
+			e.ItemChan <- item
 		}
 		for _, request := range result.Requests {
 			e.Scheduler.Submit(request)

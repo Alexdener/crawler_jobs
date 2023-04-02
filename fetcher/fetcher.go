@@ -20,3 +20,27 @@ func Fetch(url string) (content []byte, err error) {
 	}
 	return ioutil.ReadAll(resp.Body)
 }
+
+func JobFetch(url string) (content []byte, err error) {
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return
+	}
+	req.Header.Add("user-agent", "TODO") // TODO
+	req.Header.Add("cookie", "TODO")     // TODO
+	client := http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return
+	}
+	log.Println("url", url, "header", req.Header, "resp", resp.StatusCode, "err", err)
+	if err != nil {
+		return
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		err = errors.New(resp.Status)
+		return
+	}
+	return ioutil.ReadAll(resp.Body)
+}

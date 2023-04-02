@@ -1,9 +1,10 @@
 package mock
 
 import (
+	"fmt"
+
 	"crawler_jobs/engine"
 	"crawler_jobs/parser"
-	"fmt"
 )
 
 //

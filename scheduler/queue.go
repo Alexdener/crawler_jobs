@@ -6,7 +6,7 @@ import (
 
 type QueueScheduler struct {
 	requestChan chan engine.Request
-	workerChan  chan chan engine.Request //每个request分发给单独的worker(goroutine)
+	workerChan  chan chan engine.Request // 每个request分发给单独的worker(goroutine)
 }
 
 func (q *QueueScheduler) Submit(request engine.Request) {

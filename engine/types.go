@@ -8,7 +8,8 @@ type Request struct {
 }
 
 type Item struct {
-	Id string
+	Id   string
+	Data interface{}
 }
 
 type ParseResult struct {
@@ -28,5 +29,3 @@ type ParserFunc func([]byte, string) ParseResult
 type Parser interface {
 	Parse([]byte, string) ParseResult
 }
-
-

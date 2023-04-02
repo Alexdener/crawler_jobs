@@ -5,8 +5,8 @@ import (
 )
 
 type FuncParser struct {
-	parser engine.ParserFunc //对应解析函数
-	name   string            //函数名
+	parser engine.ParserFunc // 对应解析函数
+	name   string            // 函数名
 }
 
 func NewFuncParser(f engine.ParserFunc, name string) FuncParser {
@@ -16,6 +16,6 @@ func NewFuncParser(f engine.ParserFunc, name string) FuncParser {
 	}
 }
 
-func (f FuncParser) Parse(bytes []byte, s string) engine.ParseResult {
-	return f.parser(bytes, s)
+func (f FuncParser) Parse(bytes []byte, url string) engine.ParseResult {
+	return f.parser(bytes, url)
 }
