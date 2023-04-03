@@ -24,7 +24,7 @@ func main() {
 		ItemChan:         itemChan,
 	}
 	e.Run(engine.Request{
-		Url:    "http://127.0.0.1:40001/mock/11/webA?pages=1",
+		Url:    "http://127.0.0.1:40001/mock/11/webA?page=1",
 		Parser: parser.NewFuncParser(job.ParseJobList, "ParseJobList"),
 	})
 }

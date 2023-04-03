@@ -19,6 +19,8 @@ CREATE TABLE `job_list` (
   `brandScaleName` varchar(255) NOT NULL COMMENT '公司规模',
   `skills` varchar(255) NOT NULL COMMENT '技能标签',
   `welfare_list` varchar(255) NOT NULL COMMENT '公司福利标签',
+  `lid` varchar(255) NOT NULL COMMENT 'lid',
+  `security_id` varchar(255) NOT NULL COMMENT 'security_id',
   `create_time` int(10) unsigned DEFAULT '0',
   `update_time` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)

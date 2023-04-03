@@ -56,6 +56,8 @@ func saveJobList(data job.JobList) (err error) {
 			Brandscalename:   data.BrandScaleName,
 			Skills:           strings.Join(data.Skills, ","),
 			WelfareList:      strings.Join(data.WelfareList, ","),
+			Lid:              data.Lid,
+			SecurityID:       data.SecurityID,
 		}
 		if err := tx.Create(jobListData).Error; err != nil {
 			return err

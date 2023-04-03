@@ -21,6 +21,8 @@ type JobList struct {
 	Brandscalename   string `gorm:"brandScaleName" json:"brandScaleName"`     // 公司规模
 	Skills           string `gorm:"skills" json:"skills"`                     // 技能标签
 	WelfareList      string `gorm:"welfare_list" json:"welfare_list"`         // 公司福利标签
+	Lid              string `gorm:"lid" json:"lid"`                           // lid
+	SecurityID       string `gorm:"security_id" json:"security_id"`           // SecurityID
 	CreateTime       uint   `gorm:"autoCreateTime" json:"create_time"`
 	UpdateTime       uint   `gorm:"autoCreateTime" json:"update_time"`
 }

@@ -27,13 +27,15 @@ func JobFetch(url string) (content []byte, err error) {
 		return
 	}
 	req.Header.Add("user-agent", "TODO") // TODO
-	req.Header.Add("cookie", "TODO")     // TODO
+	req.Header.Add("cookie", "TODO;")    // TODO
 	client := http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
 		return
 	}
-	log.Println("url", url, "header", req.Header, "resp", resp.StatusCode, "err", err)
+	defer func() {
+		log.Println("url", url, "header", req.Header, "resp", resp.StatusCode, "content", string(content), "err", err)
+	}()
 	if err != nil {
 		return
 	}
@@ -42,5 +44,6 @@ func JobFetch(url string) (content []byte, err error) {
 		err = errors.New(resp.Status)
 		return
 	}
-	return ioutil.ReadAll(resp.Body)
+	content, err = ioutil.ReadAll(resp.Body)
+	return
 }
